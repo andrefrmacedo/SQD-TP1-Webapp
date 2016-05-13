@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from ..voter import n_voter
 
 views = Blueprint('views', __name__, url_prefix="")
 
