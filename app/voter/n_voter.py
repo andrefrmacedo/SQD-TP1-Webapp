@@ -14,6 +14,7 @@ def n_voter(type, args):
 
     response = [-1, -1, -1, -1]
     threads = []
+    backup_response = False
 
     for i in range(0, 3):
         if type == 0:
@@ -57,8 +58,13 @@ def n_voter(type, args):
         threads[5].join(4 - (time.time() - start_time))
 
         decider(response)
+        if response[3] != -1:
+            backup_response = True
 
-    return response
+    return dict(response=response,
+                ws=ws,
+                backup_response=backup_response,
+                backup_ws=backup)
 
 
 def backgroundInsulinDose(index, ws, args, response):
