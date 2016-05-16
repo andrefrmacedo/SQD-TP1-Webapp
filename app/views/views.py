@@ -53,8 +53,18 @@ def get_mealtime_personal():
     totalGrams = request.form['totalGrams']
     bloodSugar = request.form['bloodSugar']
     targetSugar = request.form['targetSugar']
-    # missing some args
+    activityLevel = request.form['activityLevel']
+    kSamples = request.form['kSamples']
+    physicalSamples = []
+    bloodSamples = []
 
-    data = n_voter(2, [totalCarbs, totalGrams, bloodSugar, targetSugar])
+    for i in range(0, int(kSamples)):
+        physical = 'physical' + str(i + 1)
+        blood = 'blood' + str(i + 1)
+        physicalSamples.append(request.form[physical])
+        bloodSamples.append(request.form[blood])
 
-    return render_template('index.html', data=data, type='Mealtime Dose Personal')
+    data = n_voter(2, [totalCarbs, totalGrams, bloodSugar,
+                       targetSugar, activityLevel, physicalSamples, bloodSamples])
+
+    return render_template('response.html', data=data, type='Mealtime Dose Personal')
