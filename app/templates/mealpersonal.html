@@ -19,15 +19,15 @@
 	<div class="columns">
 		
 		<div class="column abc" id="m_box">
-			<a href="mealtime.html"><h3 class="title is-4">Mealtime insulin dose</h3></a>
+			<a href="/mealstandard"><h3 class="title is-4">Mealtime insulin dose - standard insulin sensitivity</h3></a>
 		</div>
 
 		<div class="column abc" id="b_box">
-			<a href="bkgrnd.html"><h3 class="title is-4">Background insulin dose</h3></a>
+			<a href="/background"><h3 class="title is-4">Background insulin dose</h3></a>
 		</div>
 
 		<div class="column abc" id="p_box" style="background: #A2A2A2;">
-			<a href="personal-sens.html"><h3 class="title is-4">Personal Sensitivity to Insulin</h3></a>
+			<a href="/mealpersonal"><h3 class="title is-4">Mealtime insulin dose - personal insulin sensitivity</h3></a>
 		</div>
 	</div>
 
@@ -50,7 +50,7 @@
 			  <button class="delete" onclick="hideParent('#notif-9')"></button>K samples of drops in blood sugar out of range. Valid values in range 15mg/dl - 100mg/dl.
 			</div>
 			-->
-			<form action="" >
+			<form action="/mealtimePersonal" method="post" >
 				
 				<label class="label">Total Carbohydrates</label>
 				<p class="control">
@@ -113,7 +113,7 @@
 </div>
 
 
-<script type="text/javascript" src="js-functions.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/js-functions.js') }}"></script>
 
 </body>
 </html>

@@ -9,8 +9,8 @@ function setNSamplesVisible(e) {
 
     var status = verifyField(2,10,e);
 
-    addSampleChild('#physicalSample', e);
-    addSampleChild('#bloodSample', e);
+    addSampleChild('#physicalSample', 'physical', e);
+    addSampleChild('#bloodSample', 'blood', e);
 
     if (!status)
         return;
@@ -106,7 +106,7 @@ function resetform() {
  * Called by setNSamplesVisible(id,e) after checking if value is within range (2-10).
  * Input: id (string) = name of parent div id where children are to be inserted/removed.
  */
-function addSampleChild(id, e) {
+function addSampleChild(id, type, e) {
 
     /* If invalid value - remove all sample fields */
     if($(e.target).hasClass("is-danger") || !parseInt(e.target.value)) {
@@ -137,8 +137,18 @@ function addSampleChild(id, e) {
                 input.className = "input";
                 input.setAttribute("autocomplete","off");
                 input.setAttribute("type","text");
-                input.setAttribute("placeholder","0 - 10");
-                input.setAttribute("onkeyup", "verifyField(2,10, event)");
+                
+                if(type == 'physical'){
+                    input.setAttribute("placeholder","0 - 10");
+                    input.setAttribute("onkeyup", "verifyField(0,10, event)");
+                    input.setAttribute("name", "physical" + i);
+                }
+
+                else{
+                    input.setAttribute("placeholder","15 - 100");
+                    input.setAttribute("onkeyup", "verifyField(15,100, event)");
+                    input.setAttribute("name", "blood" + i);
+                }
 
                 /* Append structure */
                 div.appendChild(h6);
