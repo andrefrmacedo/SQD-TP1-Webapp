@@ -158,3 +158,7 @@ function addSampleChild(id, e) {
     }
 }
 
+function showDetails(){
+    $('#details').removeClass('is-hidden');
+}
+
