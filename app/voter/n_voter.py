@@ -56,7 +56,7 @@ def n_voter(type, args):
         threads[3].join(4 - (time.time() - start_time))
         threads[4].join(4 - (time.time() - start_time))
         threads[5].join(4 - (time.time() - start_time))
-
+        print response
         decider(response)
         if response[3] != -1:
             backup_response = True
@@ -99,5 +99,5 @@ def decider(response):
     array = response[:3]
     array.sort()
 
-    if array[0] != -1 and ((array[1] <= array[2] - 1) or (array[1] <= array[0] + 1)):
+    if array[0] != -1 and ((array[1] - 1 <= array[2]) or (array[1] + 1 <= array[0])):
         response[3] = array[1]
